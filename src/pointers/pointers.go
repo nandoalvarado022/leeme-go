@@ -8,6 +8,7 @@ import "fmt"
 // Recibir un parametro como puntero cuando:
 //	1. Cuando se necesita que el método modifique al reciver y que esta modificación sea permanente
 //	2. Cuando el receiver es muy grande y no queremos copiarlo. Para este ejemplo supongamos que la propiedad Records del struct Player tiene muchos elementos (15 MB)
+// De esta manera declaramos un puntero:var p* int
 
 type Pc struct { // Se crea una estructura. Es como una clase en otros lenguajes
 	Ram   int
@@ -38,7 +39,7 @@ func (myPC *Pc) duplicateRAM() {
 	myPC.Ram *= 2
 }
 
-func PunterosyStructs() {
+func PunterosYStructs() {
 	// Los punteros en GO se utilizan para modificar propiedades de los strucs en GO de forma más eficiente
 
 	a := 5

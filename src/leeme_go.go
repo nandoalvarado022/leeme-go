@@ -9,8 +9,8 @@
 //  Receiver functions -> es la forma que tiene GO para implementar métodos a los structs
 // Zero values: valores por defecto que se le asignan a las variables caundo se declaran pero no tienen asignacion. Ejemplo: int = 0, string = "", bool = false
 // COMANDOS
-// go build src/main.go -> compila el archivo main.go.Necesario para tomar los cambios que  hagamos en el archivo main.go
-// go run src/main.go -> compila y ejecuta el archivo main.go
+// go build src/context.go -> compila el archivo context.go.Necesario para tomar los cambios que  hagamos en el archivo context.go
+// go run src/context.go -> compila y ejecuta el archivo context.go
 
 // MODULOS
 // go mod init example.com/leeme_go // Crea un archivo go.mod que es el archivo de dependencias del proyecto. Es una caracteristica en GO que permite que los proyectos sean independientes de la ubicacion en la que se encuentren.
@@ -54,8 +54,7 @@ package main
 import (
 	"fmt"
 	pk "leeme_go/src/general" // Se importa el paquete mypackage y se le asigna el alias pk
-	"leeme_go/src/rutines"
-	"leeme_go/src/stringers"
+	"leeme_go/src/pointers/clients"
 	"strconv" // Se importa el paquete strconv que sirve para convertir un string a un int
 	"time"
 )
@@ -112,7 +111,7 @@ func keywords() {
 
 func arrayAndSlice() {
 	// Array
-	var array [4]int // Al se un valor inmutable como son los arrays en GO no podemos agregar otro elemento
+	var array [4]int // Al ser un valor inmutable como son los arrays en GO no podemos agregar otro elemento
 	// Si podemos cambiar el valor de un elemento
 	array[0] = 1
 	fmt.Println(array)
@@ -262,8 +261,8 @@ func basic() {
 func usingTime() {
 	layout := "2006-01-02"
 	date := "2022-02-01"
-	time, _ := time.Parse(layout, date)
-	formattedTime := time.Format("02 Jan 2006")
+	time2, _ := time.Parse(layout, date)
+	formattedTime := time2.Format("02 Jan 2006")
 	fmt.Println(formattedTime)
 }
 
@@ -271,19 +270,22 @@ func main() {
 	// fmt.Println(returnsWithNames.GetValues(2))
 	// interfaces.Basic()
 
-	// pointers.PunterosyStructs()
+	// pointers.PunterosYStructs()
 	// pointers.UsingPlayerExample()
+	// pointers.BasicExample()
+	clients.Example()
+	// incrementValor.Main()
 
 	// usingTime()
 
-	rutines.Basic()
-	rutines.Example2()
+	// rutines.Basic()
+	// rutines.Example2()
 
 	// basic()
 
 	// canales()
 
-	stringers.Basic()
+	// stringers.Basic()
 
 	// privateAndPublic()
 
