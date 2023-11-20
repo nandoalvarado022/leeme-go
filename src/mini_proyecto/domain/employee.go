@@ -5,7 +5,7 @@ package domain
 import "mini_proyecto/shared"
 
 type EmployeeService interface {
-	// Tambien tendremos las interfaces, la primera employeeService que es la que va a proveer los servicios de la aplicacion.
+	// Es la que va a proveer los servicios de la aplicacion.
 	//Actualmente solo tendremos ValidateEmployee que nos va a decir si el empleado es valido.
 	ValidateEmployee(id string) (bool, error)
 }

@@ -2,13 +2,16 @@
 // main.go es quien se encarga de iniciar el servidor HTTP  utilizando la configuración proveniente de la carpeta pkg/api/config/.
 
 // https://www.youtube.com/watch?v=3BK1c__EUig
-// En este mini proyecto manejaremos una arquitectura limpia, hexagonal o DDD.
+
+// En este mini proyecto manejaremos una arquitectura limpia, hexagonal o DDD:
 // https://github.com/jairogloz/senior-go-projects/tree/master/testing/003_mocks_self_made
 
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 	"log"
@@ -16,8 +19,6 @@ import (
 	"mini_proyecto/service"
 	"mini_proyecto/storage"
 	"net/http"
-
-	_ "github.com/go-sql-driver/mysql"
 )
 
 func indexRoute(w http.ResponseWriter, r *http.Request) {
@@ -25,9 +26,14 @@ func indexRoute(w http.ResponseWriter, r *http.Request) {
 }
 
 func getEmployees(w http.ResponseWriter, r *http.Request, employeeService domain.EmployeeService) {
+	vars := mux.Vars(r)
+	id := vars["id"]
+
 	w.Header().Set("Content-Type", "application/json")
-	var employees, _ = employeeService.ValidateEmployee("1")
+	var employees, _ = employeeService.ValidateEmployee(id)
 	fmt.Println("employees: ", employees)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(employees)
 }
 
 func main() {
@@ -62,7 +68,7 @@ func main() {
 	// API routes
 	router.HandleFunc("/", indexRoute)
 	// router.HandleFunc("/employees", getEmployees).Methods("GET")
-	router.HandleFunc("/employees", func(w http.ResponseWriter, r *http.Request) {
+	router.HandleFunc("/employees/{id}", func(w http.ResponseWriter, r *http.Request) {
 		getEmployees(w, r, employeeService)
 	})
 	log.Fatal(http.ListenAndServe(":3000", router))
