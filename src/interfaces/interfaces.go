@@ -1,4 +1,4 @@
-package interfaces
+package main
 
 import "fmt"
 
@@ -66,18 +66,20 @@ func calcular(f figuras2D) {
 	fmt.Println("Area: ", f.area())
 }
 
-func Basic() {
+func main() {
 	// Metodo en el cual se puede compartir diferenets otros métodos
-	myCuadrado := cuadrado{base: 2}
-	myRectangulo := rectangulo{base: 2, altura: 4}
+	// myCuadrado := cuadrado{base: 2}
+	// myRectangulo := rectangulo{base: 2, altura: 4}
 	// fmt.Println(myCuadrado.area())
 	// fmt.Println(myRectangulo.area())
-	calcular(myCuadrado)
-	calcular(myRectangulo)
+	// calcular(myCuadrado)
+	// calcular(myRectangulo)
 
 	// Lista de interfaces aceptando diferentes tipos de datos
-	myInterface := []interface{}{"Hola", 12, 4.90}
-	fmt.Println(myInterface...)
+	// myInterface := []interface{}{"Hola", 12, 4.90}
+	//fmt.Println(myInterface...)
+
+	Employees()
 }
 
 func Employees() {
@@ -90,8 +92,4 @@ func Employees() {
 	getMessage(tEmployee)
 	getMessage(ftEmployee)
 	//GetMessage(ftEmployee)
-}
-
-func main() {
-	
 }

@@ -1,1 +1,5 @@
 package applyingMocks
+
+func main() {
+
+}

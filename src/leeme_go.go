@@ -34,12 +34,7 @@
 // Paralelismo: es la ejecución simultánea de varias tareas (o varias partes de una única tarea) en distintos procesadores. Ejemplo: 2 personas hablando por telefono al mismo tiempo pero en dos telefonos diferentes
 // var wg = sync.WaitGroup acumula un conjunto de runtimes y las va liberando poco a poco
 // Deadlocks: En un deadlock hay una goroutine que está esperando leer o escribir en un canal, sin embargo ya no hay ninguna goroutine ejecutándose pues están esperándose las unas a las otras; están en un punto muerto del que no se puede avanzar.
-/* Los canales en GO:
-// - Son sincronos
-// https://www.youtube.com/watch?v=Rh3eSyd67h0
-Channels: medios de comunicacion entre diferentes rutinas
-Buffer channels: Son canales que tienen un buffer. El buffer es un espacio en memoria que se le asigna al canal para que pueda almacenar datos. Si el canal no tiene buffer, el canal no puede almacenar datos y se bloquea hasta que se lea un dato del canal.
-*/
+
 // Instalar librerias de terceros: go get golang.org/x/tour
 // Variables de enforno: se utiliza la libreria
 // go mod edit -replace
@@ -53,9 +48,9 @@ package main
 
 import (
 	"fmt"
+	"leeme_go/src/api_rest"
 	pk "leeme_go/src/general" // Se importa el paquete mypackage y se le asigna el alias pk
-	"leeme_go/src/pointers/clients"
-	"strconv" // Se importa el paquete strconv que sirve para convertir un string a un int
+	"strconv"                 // Se importa el paquete strconv que sirve para convertir un string a un int
 	"time"
 )
 
@@ -267,19 +262,20 @@ func usingTime() {
 }
 
 func main() {
+
+	api_rest.Main()
+
 	// fmt.Println(returnsWithNames.GetValues(2))
 	// interfaces.Basic()
 
+	// Punteros
 	// pointers.PunterosYStructs()
 	// pointers.UsingPlayerExample()
 	// pointers.BasicExample()
-	clients.Example()
+	// clients.Example()
 	// incrementValor.Main()
 
 	// usingTime()
-
-	// rutines.Basic()
-	// rutines.Example2()
 
 	// basic()
 
