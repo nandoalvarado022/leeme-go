@@ -7,7 +7,7 @@ import (
 func (s Storage) GetEmployee(id string) ( /*domain.Employee*/ []shared.Employee, error) {
 	// Unico método que implementa la interfaz EmployeeStorage que nos va a devolver un empleado.
 
-	rows, err := s.Col.Query("SELECT * FROM employees WHERE id = ?", id)
+	rows, err := s.mysqlClient.Query("SELECT * FROM employees WHERE id = ?", id)
 	if err != nil {
 		panic(err.Error())
 	}

@@ -1,6 +1,6 @@
 // En la carpeta dominio tenemos los tipos principales que son nativos de nuestro negocio.
 
-package domain
+package employee
 
 import "mini_proyecto/shared"
 
@@ -12,5 +12,5 @@ type EmployeeService interface {
 
 type EmployeeStorage interface {
 	// Tambien tendremos una interface EmployeeStorage que tiene un unico método GetEmployee que nos va a devolver un empleado.
-	GetEmployee(id string) ([]shared.Employee, error)
+	GetEmployee(id string) ([]shared.Employee, error) // Esta función se utiliza dentro del validateEmployee
 }

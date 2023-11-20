@@ -11,21 +11,21 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
+	"mini_proyecto/pkg/domain/employee"
+	"mini_proyecto/pkg/storage"
+	"net/http"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
-	"log"
-	"mini_proyecto/domain"
-	"mini_proyecto/service"
-	"mini_proyecto/storage"
-	"net/http"
 )
 
 func indexRoute(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Welcome to my API")
 }
 
-func getEmployees(w http.ResponseWriter, r *http.Request, employeeService domain.EmployeeService) {
+func getEmployees(w http.ResponseWriter, r *http.Request, employeeService employee.EmployeeService) {
 	vars := mux.Vars(r)
 	id := vars["id"]
 
@@ -62,7 +62,7 @@ func main() {
 
 	employeeStorage := storage.NewEmployeeStorage(mysqlClient) // No se en que caso se utiliza cuando utilizamos mysql. En mongo si se utiliza para guardar la referencia a la colección.
 
-	employeeService := service.NewService(employeeStorage)
+	employeeService := employee.NewService(employeeStorage)
 	fmt.Println("employeService: ", employeeService)
 
 	// API routes
