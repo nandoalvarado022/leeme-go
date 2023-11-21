@@ -1,3 +1,5 @@
+// Las interfaces responde a la prefgunta que se debe hacer, pero no el como.
+
 package main
 
 import "fmt"
@@ -66,23 +68,65 @@ func calcular(f figuras2D) {
 	fmt.Println("Area: ", f.area())
 }
 
-func main() {
-	// Metodo en el cual se puede compartir diferenets otros métodos
-	// myCuadrado := cuadrado{base: 2}
-	// myRectangulo := rectangulo{base: 2, altura: 4}
-	// fmt.Println(myCuadrado.area())
-	// fmt.Println(myRectangulo.area())
-	// calcular(myCuadrado)
-	// calcular(myRectangulo)
+// MascotaExample
 
-	// Lista de interfaces aceptando diferentes tipos de datos
-	// myInterface := []interface{}{"Hola", 12, 4.90}
-	//fmt.Println(myInterface...)
-
-	Employees()
+type Animal interface {
+	Dormir() string
 }
 
-func Employees() {
+type Mascota interface {
+	Comer() string
+}
+
+type Perro struct {
+	Nombre string
+}
+
+func (self Perro) Dormir() string {
+	fmt.Println(self.Nombre, "esta durmiendo")
+	return "Zzz..."
+}
+
+func (self Perro) Comer() string {
+	fmt.Println(self.Nombre, "esta comiendo")
+	return "Ñom ñom..."
+}
+
+func main() {
+	// FigurasExample()
+	// EmployeesExample()
+	// MascotaExample()
+
+	// Interfaces vacias. Nos permiten pasar cualquier tipo de dato como parametro.
+	mostrarVariable := func(objeto interface{}) {
+		fmt.Println(objeto)
+	}
+	mostrarVariable(true)
+}
+
+func FigurasExample() {
+	// Metodo en el cual se puede compartir diferenets otros métodos
+	myCuadrado := cuadrado{base: 2}
+	myRectangulo := rectangulo{base: 2, altura: 4}
+	fmt.Println(myCuadrado.area())
+	fmt.Println(myRectangulo.area())
+	calcular(myCuadrado)
+	calcular(myRectangulo)
+
+	// Lista de interfaces aceptando diferentes tipos de datos
+	myInterface := []interface{}{"Hola", 12, 4.90}
+	fmt.Println(myInterface...)
+}
+
+func MascotaExample() {
+	// La struct perro al poseer los métodos Dormir y Comer, implementa las interfaces Animal y Mascota.
+	// Un struct puede implementar varias interfaces.
+	myPerro := Perro{Nombre: "Firulais"}
+	myPerro.Dormir()
+	myPerro.Comer()
+}
+
+func EmployeesExample() {
 	ftEmployee := FullTimeEmployee{}
 	ftEmployee.name = "Pedro"
 	ftEmployee.age = 2

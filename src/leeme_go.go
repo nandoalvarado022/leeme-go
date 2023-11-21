@@ -44,6 +44,8 @@
 // GO no tiene manejo de excepciones por lo cual siempre hay que jugar con la variables err
 // Para exportar una variable o función se debe poner la primera letra en mayuscula
 
+// Paquetes: Un paquete no es más que un folder la cual almacena archivos .go. Nos permite agrupar bajo un contexto funciones, variables, métodos etc.
+
 package main
 
 import (
