@@ -50,7 +50,6 @@ package main
 
 import (
 	"fmt"
-	"leeme_go/src/api_rest"
 	pk "leeme_go/src/general" // Se importa el paquete mypackage y se le asigna el alias pk
 	"strconv"                 // Se importa el paquete strconv que sirve para convertir un string a un int
 	"time"
@@ -265,7 +264,14 @@ func usingTime() {
 
 func main() {
 
-	api_rest.Main()
+	// api_rest.Main()
+
+	// Emulando funcionamiento Do While en Golang. Significa que se ejecuta el código al menos una vez.
+	var numero = 1
+	for ok := true; ok; ok = numero < 10 {
+		// fmt.Println(numero)
+		numero++
+	}
 
 	// fmt.Println(returnsWithNames.GetValues(2))
 	// interfaces.Basic()
